@@ -1,4 +1,3 @@
-from collections import namedtuple
 
 class slipnet:
     
@@ -36,8 +35,7 @@ class slipnet:
     def __repr__(self):
         for key in self.nodes:
             print(self.nodes[key])
-         
-link = namedtuple('link', ['type', 'intrinsic', 'length'])    
+           
 
 class node:
     
@@ -66,12 +64,19 @@ class node:
         return 100 == self.activation
     
     def __repr__(self):
-        nodeStr = 'Node: {0}, depth={1}, activation={2}\n'.format(self.name, self.depth, self.activation)
-        print(nodeStr)
+        return 'Node: Name={0}, Depth={1}, Activation={2}'.format(self.name, self.depth, self.activation)
     
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return self.name == other.name
         return False
         
+class link:
     
+    def __init__(self, type, intrinsic, length):
+        self.type = type
+        self.intrinsic = intrinsic
+        self.length = length
+        
+    def __repr__(self):
+        return 'Link: Type={0}, Intrinsic={1}, Length={2}'.format(self.type, self.intrinsic, self.length)
