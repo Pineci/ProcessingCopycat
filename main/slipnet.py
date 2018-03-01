@@ -22,6 +22,17 @@ class slipnet:
     def getLink(self, frmName, toName):
         return self.nodes[frmName].getLink(toName)
     
+    def getLinkFrom(self, frmName):
+        return self.nodes[frmName].getLinksFrom()
+        
+    def getLinkTo(self, toName):
+        links = {}
+        for key in self.nodes:
+            linksFrom = self.nodes[key].getLinksFrom()
+            if toName in linksFrom:
+                links[key] = linksFrom[toName]
+        return links
+        
     def __repr__(self):
         for key in self.nodes:
             print(self.nodes[key])
@@ -45,8 +56,14 @@ class node:
     def getName(self):
         return self.name
     
+    def getLinksFrom(self):
+        return self.connected
+    
     def getLink(self, nodeName):
         return self.connected[nodeName]
+    
+    def isActive(self):
+        return 100 == self.activation
     
     def __repr__(self):
         nodeStr = 'Node: {0}, depth={1}, activation={2}\n'.format(self.name, self.depth, self.activation)
