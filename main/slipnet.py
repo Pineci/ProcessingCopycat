@@ -9,6 +9,22 @@ class slipnet:
         self.nodes[node.getName()] = node
         self.numNodes = self.numNodes + 1
         
+    def addNodes(self, nameArr, depthArr):
+        for i in range(len(nameArr)):
+            self.addNode(node(nameArr[i], depthArr[i]))
+            
+    def addNodesConstantDepth(self, nameArr, depth):
+        for i in range(len(nameArr)):
+            self.addNode(node(nameArr[i]), depth)
+            
+    def addNodePair(self, pair):
+        name, depth = pair
+        self.addNode(node(name, depth))
+        
+    def addNodePairs(self, pairs):
+        for i in range(len(pairs)):
+            self.addNodePair(pairs[i])
+        
     def getNode(self, nodeName):
         if nodeName in self.nodes:
             return self.nodes[nodeName]
