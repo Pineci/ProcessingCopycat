@@ -15,7 +15,7 @@ class slipnet:
             
     def addNodesConstantDepth(self, nameArr, depth):
         for i in range(len(nameArr)):
-            self.addNode(node(nameArr[i]), depth)
+            self.addNode(node(nameArr[i], depth))
             
     def addNodePair(self, pair):
         name, depth = pair
@@ -49,8 +49,11 @@ class slipnet:
         return links
         
     def __repr__(self):
+        result = []
         for key in self.nodes:
-            print(self.nodes[key])
+            result.append(str(self.nodes[key]))
+            result.append('\n')
+        return ''.join(result)
            
 
 class node:

@@ -1,11 +1,12 @@
-from slipnet import slipnet, node, link
+from slipnet import *
+from slipnetInitialize import *
 
 def setup():
     size(600, 600)
     colorMode(HSB)
     noStroke()
     l = link(1, 2, 3)
-    s = slipnet()
+    """s = slipnet()
     a = node('a', 1)
     b = node('b', 2)
     c = node('c', 3)
@@ -26,7 +27,8 @@ def setup():
     s.addLink('e', 'f', link('6', 0, 10))
     s.addLink('d', 'f', link('7', 0, 10))
     print(s.getLink('a', 'b'))
-    print(s.getLinkTo('f'))
+    print(s.getLinkTo('f'))"""
+    print(s)
 
 
 def draw():
